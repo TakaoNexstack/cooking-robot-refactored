@@ -8,7 +8,7 @@ export default function Home() {
 
   const title = "The Cooking Robot";
 
-  const handleCook = async () => {
+  const findCookableRecipes = async () => {
     const {
       data: { fridge },
     } = await axios.get("/api/fridge");
@@ -49,14 +49,14 @@ export default function Home() {
     cookableList.length > 0 && setNeedGroceries(true);
   }, [cookableList]);
 
-  const handleFridge = async () => {
+  const fetchFridgeData = async () => {
     setLocation("fridge");
     const { data } = await axios.get("/api/fridge");
     const items = await data.fridge;
     setDisplayList(items);
   };
 
-  const handlePantry = async () => {
+  const fetchPantryData = async () => {
     setLocation("pantry");
     const { data } = await axios.get("/api/pantry");
     const items = await data.pantry;
@@ -72,9 +72,9 @@ export default function Home() {
 
       {/* command buttons */}
       <div className="buttonContainer">
-        <button onClick={handleFridge}>{"What's in the fridge?"}</button>
-        <button onClick={handlePantry}>{"What's in the pantry?"}</button>
-        <button onClick={handleCook}>{"What can I cook?"}</button>
+        <button onClick={fetchFridgeData}>{"What's in the fridge?"}</button>
+        <button onClick={fetchPantryData}>{"What's in the pantry?"}</button>
+        <button onClick={findCookableRecipes}>{"What can I cook?"}</button>
         <button onClick={handleReset}>{"Reset"}</button>
       </div>
 
