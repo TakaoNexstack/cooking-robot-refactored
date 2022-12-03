@@ -37,7 +37,7 @@ export default function handler(req, res) {
         id: 205,
         name: "watercress",
         category: "vegetable",
-        qty: 15,
+        qty: 12,
       },
       {
         id: 206,

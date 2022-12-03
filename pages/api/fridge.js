@@ -25,7 +25,7 @@ export default function handler(req, res) {
         id: 103,
         name: "butter",
         category: "dairy",
-        qty: 1,
+        qty: 2,
       },
     ],
   });

@@ -1,11 +1,21 @@
 html {
+  background-color: antiquewhite;
   padding: 15px;
   font-family: sans-serif;
 }
 
 button {
+  background-color: bisque;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 20px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.2rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .buttonContainer {
@@ -24,10 +34,20 @@ button {
   transform: translateX(-50%);
 }
 
+.cookList {
+  background-color: #1aa66d;
+}
+
 .itemListItem {
   margin: 15px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 5px;
+}
+
+.shoppingButtons {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
