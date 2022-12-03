@@ -67,7 +67,10 @@ export default function Home() {
 
   return (
     <div>
+      {/* heading */}
       <h2 className="text-center">{title}</h2>
+
+      {/* command buttons */}
       <div className="buttonContainer">
         <button onClick={handleFridge}>{"What's in the fridge?"}</button>
         <button onClick={handlePantry}>{"What's in the pantry?"}</button>
@@ -77,6 +80,7 @@ export default function Home() {
 
       <br />
 
+      {/* display item list */}
       {location !== null && (
         <p className="text-center">{`The following items are in the ${location}: `}</p>
       )}
@@ -91,6 +95,7 @@ export default function Home() {
           : "No data"}
       </ul>
 
+      {/* cookable recipes list */}
       <p className="text-center">You can cook: </p>
       <ul className="itemList cookList">
         {cookableList.length
@@ -102,6 +107,7 @@ export default function Home() {
           : "No data"}
       </ul>
 
+      {/* confirm grocery shopping */}
       {needGroceries && (
         <>
           <h4 className="text-center">Need to go for grocery shopping?</h4>
