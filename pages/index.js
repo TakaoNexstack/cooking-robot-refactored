@@ -66,7 +66,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="text-center">{title}</h1>
+      <h2 className="text-center">{title}</h2>
       <div className="buttonContainer">
         <button onClick={handleFridge}>{"What's in the fridge?"}</button>
         <button onClick={handlePantry}>{"What's in the pantry?"}</button>
