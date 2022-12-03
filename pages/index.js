@@ -2,11 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const title = "The Cooking Robot";
+
   const [displayList, setDisplayList] = useState([]);
   const [cookableList, setCookableList] = useState([]);
   const [location, setLocation] = useState(null);
-
-  const title = "The Cooking Robot";
+  const [needGroceries, setNeedGroceries] = useState(false);
 
   const findCookableRecipes = async () => {
     const {
@@ -45,10 +46,6 @@ export default function Home() {
     setNeedGroceries(false);
   };
 
-  useEffect(() => {
-    cookableList.length > 0 && setNeedGroceries(true);
-  }, [cookableList]);
-
   const fetchFridgeData = async () => {
     setLocation("fridge");
     const { data } = await axios.get("/api/fridge");
@@ -63,7 +60,9 @@ export default function Home() {
     setDisplayList(items);
   };
 
-  const [needGroceries, setNeedGroceries] = useState(false);
+  useEffect(() => {
+    cookableList.length > 0 && setNeedGroceries(true);
+  }, [cookableList]);
 
   return (
     <div>
