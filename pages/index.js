@@ -5,34 +5,8 @@ export default function Home() {
   const [displayList, setDisplayList] = useState([]);
   const [cookableList, setCookableList] = useState([]);
   const [location, setLocation] = useState(null);
-  const [needGroceries, setNeedGroceries] = useState(false);
 
   const title = "The Cooking Robot";
-
-  const handleReset = () => {
-    setCookableList([]);
-    setDisplayList([]);
-    setLocation(null);
-    setNeedGroceries(false);
-  };
-
-  useEffect(() => {
-    cookableList.length > 0 && setNeedGroceries(true);
-  }, [cookableList]);
-
-  const handleFridge = async () => {
-    setLocation("fridge");
-    const { data } = await axios.get("/api/fridge");
-    const items = await data.fridge;
-    setDisplayList(items);
-  };
-
-  const handlePantry = async () => {
-    setLocation("pantry");
-    const { data } = await axios.get("/api/pantry");
-    const items = await data.pantry;
-    setDisplayList(items);
-  };
 
   const handleCook = async () => {
     const {
@@ -63,6 +37,33 @@ export default function Home() {
       )
     );
   };
+
+  const handleReset = () => {
+    setCookableList([]);
+    setDisplayList([]);
+    setLocation(null);
+    setNeedGroceries(false);
+  };
+
+  useEffect(() => {
+    cookableList.length > 0 && setNeedGroceries(true);
+  }, [cookableList]);
+
+  const handleFridge = async () => {
+    setLocation("fridge");
+    const { data } = await axios.get("/api/fridge");
+    const items = await data.fridge;
+    setDisplayList(items);
+  };
+
+  const handlePantry = async () => {
+    setLocation("pantry");
+    const { data } = await axios.get("/api/pantry");
+    const items = await data.pantry;
+    setDisplayList(items);
+  };
+
+  const [needGroceries, setNeedGroceries] = useState(false);
 
   return (
     <div>
