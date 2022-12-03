@@ -46,17 +46,10 @@ export default function Home() {
     setNeedGroceries(false);
   };
 
-  const fetchFridgeData = async () => {
-    setLocation("fridge");
-    const { data } = await axios.get("/api/fridge");
-    const items = await data.fridge;
-    setDisplayList(items);
-  };
-
-  const fetchPantryData = async () => {
-    setLocation("pantry");
-    const { data } = await axios.get("/api/pantry");
-    const items = await data.pantry;
+  const fetchDisplayData = async ({ destination, apiAddress }) => {
+    setLocation(destination);
+    const { data } = await axios.get(apiAddress);
+    const items = (await destination) === "fridge" ? data.fridge : data.pantry;
     setDisplayList(items);
   };
 
@@ -71,8 +64,26 @@ export default function Home() {
 
       {/* command buttons */}
       <div className="buttonContainer">
-        <button onClick={fetchFridgeData}>{"What's in the fridge?"}</button>
-        <button onClick={fetchPantryData}>{"What's in the pantry?"}</button>
+        <button
+          onClick={() =>
+            fetchDisplayData({
+              apiAddress: "/api/fridge",
+              destination: "fridge",
+            })
+          }
+        >
+          {"What's in the fridge?"}
+        </button>
+        <button
+          onClick={() =>
+            fetchDisplayData({
+              destination: "pantry",
+              apiAddress: "/api/pantry",
+            })
+          }
+        >
+          {"What's in the pantry?"}
+        </button>
         <button onClick={findCookableRecipes}>{"What can I cook?"}</button>
         <button onClick={handleReset}>{"Reset"}</button>
       </div>
