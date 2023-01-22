@@ -7,7 +7,7 @@ import ShopPrompt from "../components/ShopPrompt";
 export default function Home() {
   return (
     <>
-      <PageHeader>The Cooking Robot</PageHeader>
+      <PageHeader />
       <Commands />
       <IngredientList />
       <CookableList />
