@@ -1,12 +1,10 @@
-import { useEffect } from "react";
 import useIngredientStore from "../store/ingredientStore";
 import Header from "./_common/Header";
 import List from "./_common/List";
 
 const CookableList = () => {
-  const { cookableList, setNeedGroceries } = useIngredientStore((state) => ({
+  const { cookableList } = useIngredientStore((state) => ({
     cookableList: state.cookableList,
-    setNeedGroceries: state.setNeedGroceries,
   }));
 
   const cookableListColumns = [
@@ -14,10 +12,6 @@ const CookableList = () => {
       dataField: "name",
     },
   ];
-
-  useEffect(() => {
-    cookableList.length > 0 ? setNeedGroceries(true) : setNeedGroceries(false);
-  }, [cookableList, setNeedGroceries]);
 
   return (
     <>

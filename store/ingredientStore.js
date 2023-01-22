@@ -44,7 +44,10 @@ const ingredientStore = (set, get) => ({
           ).length
       )
     );
-    set({ cookableList: cookableRecipes });
+    set({
+      cookableList: cookableRecipes,
+      needGroceries: !!cookableRecipes.length,
+    });
   },
   updateDisplayList: async (destination) => {
     const { fetchData } = get();
